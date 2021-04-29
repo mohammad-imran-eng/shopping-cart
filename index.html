@@ -80,51 +80,63 @@
 
    <script>
 
+
       document.getElementById('case-increase').addEventListener('click', function () {
-         const caseInput = document.getElementById('case-count').value;
-         const caseCount = parseInt(caseInput);
-         const caseNewCount = caseCount + 1;
-         document.getElementById('case-count').value = caseNewCount;
-
-         var caseTotal = caseNewCount * 60;
-         document.getElementById('caseTotal').innerText = caseTotal;
-
+         handleProductChange(true);
       })
 
       document.getElementById('case-decrease').addEventListener('click', function () {
+         handleProductChange(false);
+      })
+
+
+      function handleProductChange(isIncrease) {
          const caseInput = document.getElementById('case-count').value;
          const caseCount = parseInt(caseInput);
-         const caseNewCount = caseCount - 1;
+         var caseNewCount = caseCount;
+         if (isIncrease == true) {
+            var caseNewCount = caseCount + 1;
+         }
+         if (isIncrease == false && caseNewCount > 0) {
+            var caseNewCount = caseCount - 1;
+         }
          document.getElementById('case-count').value = caseNewCount;
 
          var caseTotal = caseNewCount * 60;
          document.getElementById('caseTotal').innerText = caseTotal;
-      })
+      }
+
 
 
 
 
 
       document.getElementById('phone-increase').addEventListener('click', function () {
-         const caseInput = document.getElementById('phone-count').value;
-         const caseCount = parseInt(caseInput);
-         const caseNewCount = caseCount + 1;
-         document.getElementById('phone-count').value = caseNewCount;
-
-         var caseTotal = caseNewCount * 1219;
-         document.getElementById('currentMoney').innerText = caseTotal;
-
+         handleProductChange2(true)
       })
+
 
       document.getElementById('phone-decrease').addEventListener('click', function () {
+         handleProductChange2(false)
+      })
+
+      function handleProductChange2(isIncrease) {
          const caseInput = document.getElementById('phone-count').value;
          const caseCount = parseInt(caseInput);
-         const caseNewCount = caseCount - 1;
+         var caseNewCount = caseCount;
+         if (isIncrease == true) {
+            caseNewCount = caseCount + 1;
+         }
+         if (isIncrease == false && caseNewCount > 0) {
+            caseNewCount = caseCount - 1;
+         }
+
          document.getElementById('phone-count').value = caseNewCount;
 
          var caseTotal = caseNewCount * 1219;
          document.getElementById('currentMoney').innerText = caseTotal;
-      })
+      }
+
 
 
    </script>
