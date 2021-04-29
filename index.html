@@ -25,13 +25,13 @@
 
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
-                           <button onclick="handleProductChange2(false)" class="btn btn-default"><i
+                           <button onclick="handleProductChange('phone',false)" class="btn btn-default"><i
                                  class="fas fa-minus"></i></button>
                            <input id="phone-count" type="text" class="form-control text-center" value="1">
-                           <button onclick="handleProductChange2(true)" class="btn btn-default"><i
+                           <button onclick="handleProductChange('phone',true)" class="btn btn-default"><i
                                  class="fas fa-plus"></i></button>
                         </div>
-                        <h5>$ <span id="currentMoney">1219</span></h5>
+                        <h5>$ <span id="phone-Total">1219</span></h5>
                         <img src="images/remove.png" alt="" class="remove-item">
                      </div>
                   </div>
@@ -45,14 +45,14 @@
                      </div>
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
-                           <button onclick="handleProductChange(false)" class="btn btn-default"><i
+                           <button onclick="handleProductChange('case',false)" class="btn btn-default"><i
                                  class="fas fa-minus"></i></button>
                            <input id="case-count" type="text" class="form-control text-center" value="1">
-                           <button onclick="handleProductChange(true)" class="btn btn-default"><i
+                           <button onclick="handleProductChange('case',true)" class="btn btn-default"><i
                                  class="fas fa-plus"></i></button>
 
                         </div>
-                        <h5>$ <span id="caseTotal">69</span></h5>
+                        <h5>$ <span id="case-Total">69</span></h5>
                         <img src="images/remove.png" alt="" class="remove-item">
                      </div>
                   </div>
@@ -84,40 +84,30 @@
 
    <script>
 
-      function handleProductChange(isIncrease) {
-         const caseInput = document.getElementById('case-count').value;
-         const caseCount = parseInt(caseInput);
-         var caseNewCount = caseCount;
+      function handleProductChange(product, isIncrease) {
+         const productInput = document.getElementById(product + '-count').value;
+         const productCount = parseInt(productInput);
+         var productNewCount = productCount;
          if (isIncrease == true) {
-            var caseNewCount = caseCount + 1;
+            var productNewCount = productCount + 1;
          }
-         if (isIncrease == false && caseNewCount > 0) {
-            var caseNewCount = caseCount - 1;
+         if (isIncrease == false && productNewCount > 0) {
+            var productNewCount = productCount - 1;
          }
-         document.getElementById('case-count').value = caseNewCount;
+         document.getElementById(product + '-count').value = productNewCount;
 
-         var caseTotal = caseNewCount * 69;
-         document.getElementById('caseTotal').innerText = caseTotal;
+         var productTotal = 0;
+         if (product == 'phone') {
+            var productTotal = productNewCount * 1219;
+            document.getElementById(product + '-Total').innerText = productTotal;
+         }
+         if (product == 'case') {
+            var productTotal = productNewCount * 69;
+            document.getElementById(product + '-Total').innerText = productTotal;
+         }
+
+
       }
-
-
-      function handleProductChange2(isIncrease) {
-         const caseInput = document.getElementById('phone-count').value;
-         const caseCount = parseInt(caseInput);
-         var caseNewCount = caseCount;
-         if (isIncrease == true) {
-            caseNewCount = caseCount + 1;
-         }
-         if (isIncrease == false && caseNewCount > 0) {
-            caseNewCount = caseCount - 1;
-         }
-
-         document.getElementById('phone-count').value = caseNewCount;
-
-         var caseTotal = caseNewCount * 1219;
-         document.getElementById('currentMoney').innerText = caseTotal;
-      }
-
 
 
    </script>
